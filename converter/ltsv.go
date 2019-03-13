@@ -49,7 +49,7 @@ func Ltsvout(header string, log string, output string) {
 		for i, ary := range key.Header {
 			prn = prn + ary + ":" + strings.TrimSpace(vAry[i]) + "\t"
 		}
-		ltsvWriter.WriteString(prn + "\n")
+		ltsvWriter.WriteString(strings.TrimRight(prn, "\t") + "\n")
 		prn = ""
 	}
 	ltsvWriter.Flush()
