@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 )
 
 type Keyjson struct {
@@ -49,7 +50,7 @@ func Ltsvout(header string, log string, output string) {
 		for i, ary := range key.Header {
 			prn = prn + ary + ":" + strings.TrimSpace(vAry[i]) + "\t"
 		}
-		ltsvWriter.WriteString(strings.TrimRight(prn, "\t") + "\n")
+		ltsvWriter.WriteString("datetime:" + time.Now().Format("2006-01-02 15:04:05") + "\t" + strings.TrimRight(prn, "\t") + "\n")
 		prn = ""
 	}
 	ltsvWriter.Flush()
